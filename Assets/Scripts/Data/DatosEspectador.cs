@@ -56,7 +56,7 @@ public class DatosEspectador
         if (humor > 0)
             Debug.Log($"Suma {humor} en gracia");
         else if (humor < 0)
-            Debug.Log($"Suma {humor} en ofensa");
+            Debug.Log($"Suma {-humor} en ofensa");
 
         humor = Mathf.Clamp(humor, -limite, limite);
     }

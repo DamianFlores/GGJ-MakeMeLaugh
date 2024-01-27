@@ -10,8 +10,10 @@ public class CreadorCarta : MonoBehaviour
     public Carta prefabCarta;
     public RectTransform contenedor;
 
-    private void Awake() => Instancia = this;
-    public static Listas Listas = Instancia.listas;
+    private void Start()
+    {
+        Instancia = this;
+    }
 
     public void CrearAlAzar()
     {

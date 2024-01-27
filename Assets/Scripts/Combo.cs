@@ -29,8 +29,8 @@ public class Combo : MonoBehaviour
     {
         gracia = cartas.Sum(c => c.datos.gracia),
         ofensa = cartas.Sum(c => c.datos.ofensa),
-        categoria = cartas.Any(c => c == CreadorCarta.Listas.yuxtaposicion) ?
-            CreadorCarta.Listas.yuxtaposicion :
+        categoria = cartas.Any(c => c == CreadorCarta.Instancia.listas.yuxtaposicion) ?
+            CreadorCarta.Instancia.listas.yuxtaposicion :
             cartas.First().datos.categoria
     };
 
