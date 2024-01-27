@@ -10,6 +10,8 @@ public class Carta : MonoBehaviour
     public Image fondo, iconoTipo, iconoCategoria;
     public DatosCarta datos;
 
+    public static event System.Action<Carta> AlCliquear;
+
     public void Iniciar(DatosCarta datos)
     {
         this.datos = datos;
@@ -19,5 +21,10 @@ public class Carta : MonoBehaviour
         fondo.color = datos.categoria.color;
         iconoTipo.sprite = datos.tipo.logo;
         iconoCategoria.sprite = datos.categoria.logo;
+    }
+
+    public void Click()
+    {
+        AlCliquear?.Invoke(this);
     }
 }

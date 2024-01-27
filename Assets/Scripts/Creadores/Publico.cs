@@ -17,6 +17,12 @@ public class Publico : MonoBehaviour
             var datos = DatosEspectador.CrearAlAzar(categorias);
             e.Iniciar(datos);
         }
+    }
+
+    private void ClickCarta(Carta carta)
+    {
 
     }
+
+
 }

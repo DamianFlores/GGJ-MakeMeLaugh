@@ -36,7 +36,7 @@ public class Espectador : MonoBehaviour
     {
         var compatibilidades = string.Join('\n', datos.compatibilidades.Select(c => $"<b>{c.Key.name.ToUpper()}</b>\ngracia: {c.Value.aFavor}\nofensa: {c.Value.enContra}\n").ToArray());
 
-        texto.text = $"Estado: {datos.humor}\n\n{compatibilidades}";
+        texto.text = $"<size=24>Estado: {datos.humor}</size>\n\n{compatibilidades}";
     }
 
     private void OnDestroy()
