@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a95ed4724765f49bc347a66322eeba, type: 3}
+  m_Name: Listas
+  m_EditorClassIdentifier: 
+  categorias:
+  - {fileID: 11400000, guid: 7efb76781c4cbde47ae8775d6dfa4413, type: 2}
+  - {fileID: 11400000, guid: 619ddde73acea344da3b30255d72f9ac, type: 2}
+  - {fileID: 11400000, guid: 1bf2395f868c214418e599ca76465af4, type: 2}
+  - {fileID: 11400000, guid: 2a79bb2f626b5a243a49fced769efe83, type: 2}
+  - {fileID: 11400000, guid: eacff5905329a1f45a148cfd0a9443d0, type: 2}
+  tipos:
+  - {fileID: 11400000, guid: fb116291c26b757469fe81d406792154, type: 2}
+  - {fileID: 11400000, guid: a4f93d7031098e547ba7372591b0fa00, type: 2}
+  - {fileID: 11400000, guid: 8536df379f758c640bc74c3520ffe2b3, type: 2}
+  - {fileID: 11400000, guid: b652ee6cb3b885e419278b7765adea47, type: 2}
+  yuxtaposicion: {fileID: 11400000, guid: eacff5905329a1f45a148cfd0a9443d0, type: 2}
+  remate: {fileID: 11400000, guid: b652ee6cb3b885e419278b7765adea47, type: 2}
+  autoconclusivo: {fileID: 11400000, guid: fb116291c26b757469fe81d406792154, type: 2}
