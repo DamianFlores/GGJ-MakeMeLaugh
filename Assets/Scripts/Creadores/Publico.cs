@@ -7,6 +7,11 @@ public class Publico : MonoBehaviour
     public Listas listas;
     private Espectador[] espectadores;
 
+    private void Awake()
+    {
+        Carta.AlCliquear += ClickCarta;
+    }
+
     void Start()
     {
         espectadores = GetComponentsInChildren<Espectador>();
@@ -24,5 +29,8 @@ public class Publico : MonoBehaviour
 
     }
 
-
+    private void OnDestroy()
+    {
+        Carta.AlCliquear -= ClickCarta;
+    }
 }
