@@ -28,5 +28,6 @@ public class Juego : MonoBehaviour
         //Rellenar mano
 
         AlPasarDeRonda?.Invoke();
+
     }
 }

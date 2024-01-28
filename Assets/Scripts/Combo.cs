@@ -16,7 +16,7 @@ public class Combo : EspacioCarta
 
     private List<Carta> cartas = new List<Carta>();
 
-    private int rondasRestantes = 2;
+    public int rondasRestantes = 2;
     public Image fondo;
 
     public static event Action<Combo> Ejecutar;

@@ -63,8 +63,8 @@ public class MovimientoCartas : MonoBehaviour
 
         if (destino)
         {
-            destino.ColocarCarta();
             mano.Sacar(cartaSeleccionada);
+            destino.ColocarCarta();
         }
         else
             DevolverAMano();

@@ -9,6 +9,7 @@ public class Mano : MonoBehaviour
 
     void Start()
     {
+        Juego.AlPasarDeRonda += Llenar;
         StartCoroutine(Iniciar());
     }
 
@@ -31,7 +32,13 @@ public class Mano : MonoBehaviour
 
     public void Llenar()
     {
+        Debug.Log("Llenar");
         while (cartas.Count < limite)
             CreadorCarta.Instancia.CrearAlAzar();
+    }
+
+    private void OnDestroy()
+    {
+        Juego.AlPasarDeRonda -= Llenar;
     }
 }
