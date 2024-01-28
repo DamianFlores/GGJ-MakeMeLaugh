@@ -32,7 +32,7 @@ public class DatosEspectador
         return new DatosEspectador { compatibilidades = compatibilidades };
     }
 
-    public void ProcesarEfectoCarta(Carta carta)
+    public int ProcesarEfectoCarta(Carta carta)
     {
         //Debug.Log($"Procesa carta {carta.datos.categoria}");
 
@@ -48,8 +48,8 @@ public class DatosEspectador
         for (var i = 0; i < carta.datos.ofensa; i++)
             restaHumor += Random.Range(0, 6) + baseOfensa;
         
-        Debug.Log($"Suma {sumaHumor}");
-        Debug.Log($"Resta {restaHumor}");
+        //Debug.Log($"Suma {sumaHumor}");
+        //Debug.Log($"Resta {restaHumor}");
 
         humor += sumaHumor - restaHumor;
 
@@ -58,7 +58,9 @@ public class DatosEspectador
         else if (humor < 0)
             Debug.Log($"Suma {-humor} en ofensa");
 
-        humor = Mathf.Clamp(humor, -limite, limite);
+        //humor = Mathf.Clamp(humor, -limite, limite);
+
+        return sumaHumor - restaHumor;
     }
 
     public static Compatibilidad CompatibilidadAlAzar(Categoria categoria)
