@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d31589dbc2ad94284004387cc31237, type: 3}
   m_Name: Remate
   m_EditorClassIdentifier: 
-  logo: {fileID: 0}
+  logo: {fileID: 21300000, guid: 39a55074d346a11488581d311146784d, type: 3}
   esInicio: 0
   termina: 1
   minimoGracia: 2

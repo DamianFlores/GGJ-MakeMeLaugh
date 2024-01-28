@@ -34,7 +34,7 @@ public class DatosEspectador
 
     public void ProcesarEfectoCarta(Carta carta)
     {
-        Debug.Log($"Procesa carta {carta.datos.categoria}");
+        //Debug.Log($"Procesa carta {carta.datos.categoria}");
 
         var compatibilidad = compatibilidades[carta.datos.categoria];
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,14 @@ public class Combo : MonoBehaviour
 
     private List<Carta> cartas = new List<Carta>();
 
+    private int rondasRestantes;
+
     public static event System.Action<Combo> Ejecutar;
+
+    private void Awake()
+    {
+        Juego.AlPasarDeRonda += AlPasarDeRonda;
+    }
 
     public void Agregar(Carta c)
     {
@@ -43,5 +51,23 @@ public class Combo : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
+    }
+
+    private void AlPasarDeRonda()
+    {
+        if (--rondasRestantes <= 0)
+            Caducar();
+    }
+
+    private void Caducar()
+    {
+        //tirar un cartelito
+
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        Juego.AlPasarDeRonda -= AlPasarDeRonda;
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d31589dbc2ad94284004387cc31237, type: 3}
   m_Name: Autoconclusivo
   m_EditorClassIdentifier: 
-  logo: {fileID: 0}
+  logo: {fileID: 21300000, guid: 114e8e48dfcf1b74fba2ca27234a4aa7, type: 3}
   esInicio: 1
   termina: 1
   minimoGracia: 1

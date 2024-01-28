@@ -6,6 +6,7 @@ public class MovimientoCartas : MonoBehaviour
 {
     public static MovimientoCartas instancia;
 
+    public Camera camara;
     public float velocidadCarta = 10;
     public Carta cartaSeleccionada;
 
@@ -22,28 +23,57 @@ public class MovimientoCartas : MonoBehaviour
 
     void Update()
     {
-        if (cartaSeleccionada != null)
-        {
-            float distanciaACarta = DistanciaCartaAMouse(cartaSeleccionada);
+        if (cartaSeleccionada == null)
+            return;
 
-            if (distanciaACarta > 0.1f)
-            {
-                float velocidadActual = velocidadCarta * distanciaACarta;
-                Vector3 posicionObjetivo = Input.mousePosition;
-                cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-            }
-            cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
+        if (Input.GetMouseButtonUp(0))
+            SoltarCarta();
+        else
+            MoverCarta();
+    }
+
+    private void MoverCarta()
+    {
+        float distanciaACarta = DistanciaCartaAMouse(cartaSeleccionada);
+
+        if (distanciaACarta > 0.1f)
+        {
+            //float velocidadActual = velocidadCarta * distanciaACarta;
+            //Vector3 posicionObjetivo = Input.mousePosition;
+            //cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
+
+            float velocidadActual = velocidadCarta * distanciaACarta;
+            Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 360;
+            cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
         }
+        cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
+    }
+
+    private void SoltarCarta()
+    {
+        var destino = BuscarDestinoParaCarta();
+
+        if (destino)
+            destino.ColocarCarta();
+        else
+            DevolverAMano();
+    }
+
+    private EspacioCarta BuscarDestinoParaCarta()
+    {
+        return null;
     }
 
     public void SetCartaSeleccionada(Carta carta)
     {
         posicionInicial = carta.transform.position;
         cartaSeleccionada = carta;
+        cartaSeleccionada.Seleccionar();
     }
 
     public void DeseleccionarCarta()
     {
+        cartaSeleccionada.Deseleccionar();
         cartaSeleccionada = null;
     }
 
