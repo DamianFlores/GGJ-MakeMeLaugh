@@ -47,25 +47,10 @@ public class MovimientoCartas : MonoBehaviour
     {
         float distanciaACarta = DistanciaCartaAMouse(cartaSeleccionada);
 
-<<<<<<< HEAD
-        if (distanciaACarta > 0.1f)
-        {
-            //float velocidadActual = velocidadCarta * distanciaACarta;
-            //Vector3 posicionObjetivo = Input.mousePosition;
-            //cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-
-            float velocidadActual = velocidadCarta * distanciaACarta;
-            Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
-            cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-        }
-        cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
-=======
         float velocidadActual = velocidadCarta * distanciaACarta;
         Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
         posicionObjetivo.z = cartaSeleccionada.transform.position.z;
         cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-        
->>>>>>> b260b1042e17bf6a7028e5d8e43a386276d956a0
     }
 
     private void SoltarCarta()
@@ -80,15 +65,17 @@ public class MovimientoCartas : MonoBehaviour
 
     private EspacioCarta BuscarDestinoParaCarta()
     {
-        var rayo = camara.ScreenPointToRay(Input.mousePosition);
+        var objetos = IsPointerOverUIObject();
 
-        if (Physics.Raycast(rayo, out var hit, 1000f))
+        if (objetos.Count > 0 && objetos[0].gameObject.CompareTag("Soltar Carta"))
         {
-            Debug.Log("Golpea");
+            var descarte = objetos[0].gameObject.GetComponentInParent<Descarte>();
+            if (descarte)
+                return descarte;
 
-            var espacio = hit.transform.GetComponent<EspacioCarta>();
-            if (espacio)
-                return espacio;
+            var combo = objetos[0].gameObject.GetComponentInParent<Combo>();
+            if (combo && combo.PuedeAgregar(cartaSeleccionada))
+                return combo;
         }
 
         return null;
@@ -98,18 +85,18 @@ public class MovimientoCartas : MonoBehaviour
     {
         posicionInicial = carta.transform.position;
         cartaSeleccionada = carta;
-        cartaSeleccionada.Seleccionar();
+        cartaSeleccionada.DesactivarRaycast();
     }
 
     public void DeseleccionarCarta()
     {
-        cartaSeleccionada.Deseleccionar();
         cartaSeleccionada = null;
     }
 
     public void DevolverAMano()
     {
         cartaSeleccionada.transform.position = posicionInicial;
+        cartaSeleccionada.ActivarRaycast();
         DeseleccionarCarta();
     }
 }

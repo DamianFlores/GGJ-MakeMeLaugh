@@ -31,12 +31,12 @@ public class Carta : MonoBehaviour
         AlCliquear?.Invoke(this);
     }
 
-    public void Seleccionar()
+    public void DesactivarRaycast()
     {
         raycasteable.raycastTarget = false;
     }
 
-    public void Deseleccionar()
+    public void ActivarRaycast()
     {
         raycasteable.raycastTarget = true;
     }

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Soltar Carta
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fondo
+    uniqueID: 1010393645
+    locked: 0
+  - name: Escena
+    uniqueID: 294987297
+    locked: 0
+  - name: Primer Plano
+    uniqueID: 1414941873
+    locked: 0
+  - name: UI
+    uniqueID: 2913937115
     locked: 0
