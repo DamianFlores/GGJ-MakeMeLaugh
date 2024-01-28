@@ -56,7 +56,7 @@ public class Combo : EspacioCarta
             GetComponentInParent<Combos>().AgregarCombo();
 
         cartas.Add(c);
-
+        rondasRestantes = 2;
         Ejecutar?.Invoke(this);
 
         if (c.datos.tipo.termina)
@@ -85,7 +85,7 @@ public class Combo : EspacioCarta
 
     private void AlPasarDeRonda()
     {
-        if (cartas.Count > 0 && --rondasRestantes <= 0)
+        if (cartas.Count > 0 && rondasRestantes-- <= 0)
             Caducar();
     }
 
