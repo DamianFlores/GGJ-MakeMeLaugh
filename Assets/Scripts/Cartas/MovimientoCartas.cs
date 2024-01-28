@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovimientoCartas : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MovimientoCartas : MonoBehaviour
     public Camera camara;
     public float velocidadCarta = 10;
     public Carta cartaSeleccionada;
+    public LayerMask capaDestinoCartas;
 
     public Vector2 posicionInicial;
 
@@ -43,7 +45,6 @@ public class MovimientoCartas : MonoBehaviour
             //cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
 
             float velocidadActual = velocidadCarta * distanciaACarta;
-            print(distanciaACarta);
             Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
             cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
         }
@@ -62,6 +63,17 @@ public class MovimientoCartas : MonoBehaviour
 
     private EspacioCarta BuscarDestinoParaCarta()
     {
+        var rayo = camara.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(rayo, out var hit, 1000f))
+        {
+            Debug.Log("Golpea");
+
+            var espacio = hit.transform.GetComponent<EspacioCarta>();
+            if (espacio)
+                return espacio;
+        }
+
         return null;
     }
 
@@ -81,5 +93,6 @@ public class MovimientoCartas : MonoBehaviour
     public void DevolverAMano()
     {
         cartaSeleccionada.transform.position = posicionInicial;
+        DeseleccionarCarta();
     }
 }
