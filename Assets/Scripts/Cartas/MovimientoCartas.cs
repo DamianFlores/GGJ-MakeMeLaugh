@@ -19,7 +19,7 @@ public class MovimientoCartas : MonoBehaviour
         Carta.AlCliquear += SetCartaSeleccionada;
     }
 
-    private float DistanciaCartaAMouse(Carta carta) => Vector2.Distance(carta.transform.position, Input.mousePosition);
+    private float DistanciaCartaAMouse(Carta carta) => Vector2.Distance(carta.transform.position, camara.ScreenToWorldPoint(Input.mousePosition));
 
     void Update()
     {
@@ -36,18 +36,11 @@ public class MovimientoCartas : MonoBehaviour
     {
         float distanciaACarta = DistanciaCartaAMouse(cartaSeleccionada);
 
-        if (distanciaACarta > 0.1f)
-        {
-            //float velocidadActual = velocidadCarta * distanciaACarta;
-            //Vector3 posicionObjetivo = Input.mousePosition;
-            //cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-
-            float velocidadActual = velocidadCarta * distanciaACarta;
-            print(distanciaACarta);
-            Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
-            cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
-        }
-        cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
+        float velocidadActual = velocidadCarta * distanciaACarta;
+        Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
+        posicionObjetivo.z = cartaSeleccionada.transform.position.z;
+        cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
+        
     }
 
     private void SoltarCarta()
