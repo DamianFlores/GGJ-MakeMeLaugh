@@ -85,7 +85,7 @@ public class Combo : EspacioCarta
 
     private void AlPasarDeRonda()
     {
-        if (--rondasRestantes <= 0)
+        if (cartas.Count > 0 && --rondasRestantes <= 0)
             Caducar();
     }
 
