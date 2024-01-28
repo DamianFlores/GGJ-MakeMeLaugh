@@ -22,7 +22,6 @@ public class Listas : ScriptableObject
         foreach(var t in tipos)
             for (var i = 0; i < t.prioridad; i++)
                 tipoParaAzar.Add(t);
-
         return AlAzar(tipoParaAzar);
     }
 
