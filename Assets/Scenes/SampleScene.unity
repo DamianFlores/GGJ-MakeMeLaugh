@@ -3594,8 +3594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1575159558
 MonoBehaviour:
@@ -4187,7 +4187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listas: {fileID: 11400000, guid: 7b1d82c6d35031243aad4f9e87592f6d, type: 2}
   prefabCarta: {fileID: 4141937255428944187, guid: f36e66297f46e5d4189f22465d4ac7d4, type: 3}
-  mano: {fileID: 0}
 --- !u!4 &1795830588
 Transform:
   m_ObjectHideFlags: 0
