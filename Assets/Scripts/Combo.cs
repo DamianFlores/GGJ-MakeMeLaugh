@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class Combo : EspacioCarta
@@ -16,6 +17,7 @@ public class Combo : EspacioCarta
     private List<Carta> cartas = new List<Carta>();
 
     private int rondasRestantes = 2;
+    public Image fondo;
 
     public static event Action<Combo> Ejecutar;
 
@@ -37,6 +39,7 @@ public class Combo : EspacioCarta
             cartaAsignada.transform.SetParent(transform);
             cartaAsignada.transform.DOMove(transform.position + Vector3.right * separacion * cartas.Count, 0.2f).SetEase(Ease.OutQuad);
             Agregar(cartaAsignada);
+            fondo.transform.position = transform.position + Vector3.right * separacion * cartas.Count;
         }
     }
 
