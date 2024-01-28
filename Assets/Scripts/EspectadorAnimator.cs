@@ -10,12 +10,14 @@ public class EspectadorAnimator : MonoBehaviour
     {
         animator.SetBool("Contento", true);
         EvaluarVariante();
+        Invoke(nameof(VolverANeutral), 2);
     }
 
     public void Enojarse()
     {
-        animator.SetBool("Contento", true);
+        animator.SetBool("Enojado", true);
         EvaluarVariante();
+        Invoke(nameof(VolverANeutral), 2);
     }
 
     private void EvaluarVariante()
