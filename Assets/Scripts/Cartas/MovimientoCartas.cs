@@ -21,7 +21,7 @@ public class MovimientoCartas : MonoBehaviour
         Carta.AlCliquear += SetCartaSeleccionada;
     }
 
-    private float DistanciaCartaAMouse(Carta carta) => Vector2.Distance(carta.transform.position, Input.mousePosition);
+    private float DistanciaCartaAMouse(Carta carta) => Vector2.Distance(carta.transform.position, camara.ScreenToWorldPoint(Input.mousePosition));
 
     void Update()
     {
@@ -34,10 +34,20 @@ public class MovimientoCartas : MonoBehaviour
             MoverCarta();
     }
 
+    private List<RaycastResult> IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results;
+    }
+
     private void MoverCarta()
     {
         float distanciaACarta = DistanciaCartaAMouse(cartaSeleccionada);
 
+<<<<<<< HEAD
         if (distanciaACarta > 0.1f)
         {
             //float velocidadActual = velocidadCarta * distanciaACarta;
@@ -49,6 +59,13 @@ public class MovimientoCartas : MonoBehaviour
             cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
         }
         cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
+=======
+        float velocidadActual = velocidadCarta * distanciaACarta;
+        Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
+        posicionObjetivo.z = cartaSeleccionada.transform.position.z;
+        cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
+        
+>>>>>>> b260b1042e17bf6a7028e5d8e43a386276d956a0
     }
 
     private void SoltarCarta()
