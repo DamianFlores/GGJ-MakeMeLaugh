@@ -29,7 +29,6 @@ public class Espectador : MonoBehaviour
 
         int humorAplicado = datos.ProcesarEfectoCarta(cartaSimulada);
 
-
         print($"Aplicando efectos de combo {humorAplicado}");
         if (humorAplicado > 0)
         {

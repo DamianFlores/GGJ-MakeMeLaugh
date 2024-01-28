@@ -6,20 +6,17 @@ public class Juego : MonoBehaviour
 {
     public static Juego Instancia;
 
-    public IndicadorPuntaje uiGracia, uiIndignacion;
+    public Barra uiGracia, uiIndignacion;
 
     public static event System.Action AlPasarDeRonda;
 
     private int puntajeGracia, puntajeIndignacion;
 
+    public int graciaFinal, indignacionFinal;
+
     void Start()
     {
         Instancia = this;
-    }
-
-    void Update()
-    {
-        
     }
 
     public void PasarDeRonda()
@@ -29,5 +26,25 @@ public class Juego : MonoBehaviour
 
         AlPasarDeRonda?.Invoke();
 
+    }
+
+    public int Gracia
+    {
+        set
+        {
+            puntajeGracia = value;
+            uiGracia.Valor = 1f * puntajeGracia / graciaFinal;
+        }
+        get => puntajeGracia;
+    }
+
+    public int Indignacion
+    {
+        set
+        {
+            puntajeIndignacion = value;
+            uiIndignacion.Valor = 1f * puntajeIndignacion / indignacionFinal;
+        }
+        get => puntajeIndignacion;
     }
 }

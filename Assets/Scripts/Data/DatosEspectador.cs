@@ -54,9 +54,15 @@ public class DatosEspectador
         humor += sumaHumor - restaHumor;
 
         if (humor > 0)
+        {
             Debug.Log($"Suma {humor} en gracia");
+            Juego.Instancia.Gracia += humor;
+        }
         else if (humor < 0)
+        {
             Debug.Log($"Suma {-humor} en ofensa");
+            Juego.Instancia.Indignacion -= humor;
+        }
 
         //humor = Mathf.Clamp(humor, -limite, limite);
 
