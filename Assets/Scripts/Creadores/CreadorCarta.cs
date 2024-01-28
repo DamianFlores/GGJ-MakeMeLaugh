@@ -41,7 +41,4 @@ public class CreadorCarta : MonoBehaviour
 
         mano.Agregar(carta);
     }
-
-
-
 }

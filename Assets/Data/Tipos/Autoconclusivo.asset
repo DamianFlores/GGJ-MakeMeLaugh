@@ -19,3 +19,4 @@ MonoBehaviour:
   maximoGracia: 2
   minimoOfensa: 1
   maximoOfensa: 1
+  prioridad: 2

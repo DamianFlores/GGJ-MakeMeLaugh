@@ -11,6 +11,8 @@ public class Tipo : ScriptableObject
     [Range(-1, 5)]
     public int minimoGracia, maximoGracia, minimoOfensa, maximoOfensa;
 
+    public int prioridad;
+
     public int GraciaAlAzar => Random.Range(minimoGracia, maximoGracia + 1);
     public int OfensaAlAzar => Random.Range(minimoOfensa, maximoOfensa + 1);
 }
