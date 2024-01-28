@@ -12,11 +12,15 @@ public class MovimientoCartas : MonoBehaviour
     public Carta cartaSeleccionada;
     public LayerMask capaDestinoCartas;
 
+    private Mano mano;
+
     public Vector2 posicionInicial;
 
     private void Awake()
     {
         instancia = this;
+
+        mano = FindObjectOfType<Mano>();
 
         Carta.AlCliquear += SetCartaSeleccionada;
     }
@@ -58,7 +62,10 @@ public class MovimientoCartas : MonoBehaviour
         var destino = BuscarDestinoParaCarta();
 
         if (destino)
+        {
             destino.ColocarCarta();
+            mano.Sacar(cartaSeleccionada);
+        }
         else
             DevolverAMano();
     }

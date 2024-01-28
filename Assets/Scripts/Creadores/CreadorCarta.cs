@@ -8,16 +8,18 @@ public class CreadorCarta : MonoBehaviour
 
     public Listas listas;
     public Carta prefabCarta;
-    public RectTransform contenedor;
+    private Mano mano;
 
     private void Start()
     {
         Instancia = this;
+
+        mano = FindObjectOfType<Mano>();
     }
 
     public void CrearAlAzar()
     {
-        var carta = Instantiate(prefabCarta, contenedor);
+        var carta = Instantiate(prefabCarta, mano.transform);
         var categoria = listas.CategoriaAlAzar();
         Tipo tipo;
 
@@ -36,6 +38,8 @@ public class CreadorCarta : MonoBehaviour
         };
 
         carta.Iniciar(datos);
+
+        mano.Agregar(carta);
     }
 
 

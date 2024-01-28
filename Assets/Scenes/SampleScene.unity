@@ -3569,6 +3569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1575159557}
   - component: {fileID: 1575159558}
+  - component: {fileID: 1575159559}
   m_Layer: 5
   m_Name: Mano
   m_TagString: Untagged
@@ -3622,6 +3623,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1575159559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575159556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ebbf59672ae8d48ab51bb5cb0dd2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limite: 5
 --- !u!1 &1619286564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,7 +4187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listas: {fileID: 11400000, guid: 7b1d82c6d35031243aad4f9e87592f6d, type: 2}
   prefabCarta: {fileID: 4141937255428944187, guid: f36e66297f46e5d4189f22465d4ac7d4, type: 3}
-  contenedor: {fileID: 1575159557}
+  mano: {fileID: 0}
 --- !u!4 &1795830588
 Transform:
   m_ObjectHideFlags: 0
