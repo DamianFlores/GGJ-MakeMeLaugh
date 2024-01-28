@@ -43,7 +43,8 @@ public class MovimientoCartas : MonoBehaviour
             //cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
 
             float velocidadActual = velocidadCarta * distanciaACarta;
-            Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward * 360;
+            print(distanciaACarta);
+            Vector3 posicionObjetivo = camara.ScreenToWorldPoint(Input.mousePosition);
             cartaSeleccionada.transform.position = Vector3.MoveTowards(cartaSeleccionada.transform.position, posicionObjetivo, velocidadActual * Time.deltaTime);
         }
         cartaSeleccionada.transform.position = Vector2.MoveTowards(cartaSeleccionada.transform.position, Input.mousePosition, velocidadCarta * Time.deltaTime);
